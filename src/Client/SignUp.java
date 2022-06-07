@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 import Helper.DBService;
 import model.User;
 
@@ -96,6 +98,8 @@ public class SignUp extends JFrame {
 				try {
 					dbService.signUp(user);
 					JOptionPane.showMessageDialog(null, "Dang ki thanh cong");
+				} catch (MySQLIntegrityConstraintViolationException e3) {
+					JOptionPane.showMessageDialog(null, "Username da ton tai");
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "Dang ki that bai");
 					e2.printStackTrace();
